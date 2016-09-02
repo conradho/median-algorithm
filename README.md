@@ -5,3 +5,14 @@ https://news.ycombinator.com/item?id=7415708
 
 want to try implementing the diff algorithms in a TDD fashion to compare actual
 running time, and to maybe use diff languages to implement them
+
+
+setup
+=====
+- use python3. install requirements.txt
+- then just run py.test
+
+
+notes
+=====
+- turns out median of median = quickselect + smart selection of pivots to avoid worst case. let's implement quickselect first

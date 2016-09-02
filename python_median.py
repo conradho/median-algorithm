@@ -17,5 +17,7 @@ def partition(unordered_list, pivot_value):
 
     return left + [pivot_value] + right
 
-def get_kth_element(unordered_list, kth):
-    return unordered_list[0]
+def get_kth_element(unordered_list, kth, left_index, right_index):
+    if left_index == right_index:
+        return unordered_list[left_index]
+

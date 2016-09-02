@@ -15,7 +15,10 @@ def partition(unordered_list, pivot_value):
         else:
             right.append(element)
 
-    return left + [pivot_value] + right
+    # yay len() is O(1)
+    pivot_index = len(left)
+
+    return (left + [pivot_value] + right, pivot_index)
 
 def get_kth_element(unordered_list, kth, left_index, right_index):
     if left_index == right_index:

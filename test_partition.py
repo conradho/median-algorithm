@@ -8,15 +8,12 @@ from python_median import partition
 def test_partition_splits_list_by_comparing_to_pivot(unordered_list, choice):
     pivot = choice(unordered_list)
 
-    partitioned_list = partition(unordered_list, pivot)
+    partitioned_list, pivot_index = partition(unordered_list, pivot)
 
     assert len(partitioned_list) == len(unordered_list)
+    assert partitioned_list[pivot_index] == pivot
 
-    before_pivot = True
-    for element in partitioned_list:
-        if element == pivot:
-            before_pivot = False
-        if before_pivot:
-            assert element < pivot, 'found elements bigger than pivot before pivot'
-        else:
-            assert element >= pivot, 'found elements smaller than pivot after pivot'
+    for element in partitioned_list[:pivot_index]:
+        assert element < pivot, 'found elements bigger than pivot before pivot'
+    for element in partitioned_list[pivot_index:]:
+        assert element >= pivot, 'found elements smaller than pivot after pivot'

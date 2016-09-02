@@ -16,3 +16,5 @@ setup
 notes
 =====
 - turns out median of median = quickselect + smart selection of pivots to avoid worst case. let's implement quickselect first
+
+- now let's skip hypothesis test and build up quickselect bit by bit

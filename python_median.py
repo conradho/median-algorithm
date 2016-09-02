@@ -23,7 +23,25 @@ def partition(unordered_list, pivot_index, left_bound, right_bound):
 
     return (left + [pivot] + right, pivot_index)
 
-def get_kth_element(unordered_list, kth, left_index, right_index):
-    if left_index == right_index:
-        return unordered_list[left_index]
+
+def get_kth_element(unordered_list, kth, search_from, search_to):
+    assert 0 <= search_from <= kth < search_to <= len(unordered_list)
+
+    if search_from == search_to - 1:
+        return unordered_list[search_from]
+
+    # we will be smarter about choosing pivot index later
+    pivot_index = search_from
+
+    new_unordered_list, new_pivot_index = partition(unordered_list, pivot_index, search_from, search_to)
+
+    if new_pivot_index == kth:
+        return new_unordered_list[kth]
+
+    if new_pivot_index > kth:
+        search_to = new_pivot_index
+    else:
+        search_from = new_pivot_index + 1
+
+    return get_kth_element(new_unordered_list, kth, search_from, search_to)
 
